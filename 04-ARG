@@ -1,8 +1,0 @@
-FROM almalinux:9
-# Build-time variable
-ARG APP_VERSION=1.0
-RUN echo "Building version $APP_VERSION"
-
-# Runtime variable
-ENV APP_ENV=production
-CMD ["printenv"]
