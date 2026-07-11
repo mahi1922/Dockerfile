@@ -8,4 +8,4 @@ RUN echo "cousre is ${course}, and goal is ${Goal}"
 RUN dnf install nginx -y
 RUN rm -rf /usr/share/nginx/html/*
 COPY qi/ /usr/share/nginx/html
-CMD ["ngnix", "-g", "daemon off;" ]
+CMD ["nginx", "-g", "daemon off;" ]
