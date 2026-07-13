@@ -1,0 +1,21 @@
+name: roboshop
+services: 
+  mongodb:
+    build: ./mongodb
+    image: 225834/mongodb:v1
+    container_name: mongodb
+  catalogue:
+    build: ./catalogue
+    image: 225834/catalogue:v1
+    container_name: catalogue
+    depends_on:
+      - mongodb
+  frontend:
+    build: ./frontend
+    image: 225834/frontend:v1
+    container_name: frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - catalogue
+      
