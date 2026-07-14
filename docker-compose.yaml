@@ -10,6 +10,9 @@ services:
     container_name: catalogue
     depends_on:
       - mongodb
+  redis:
+    image: redis:7
+    container_name: redis
   user:
     build: ./user
     image: 225834/user:v1
@@ -21,9 +24,6 @@ services:
     depends_on:
       - mongodb
       - redis
-  redis:
-    image: redis:7
-    container_name: redis
   frontend:
     build: ./frontend
     image: 225834/frontend:v1
