@@ -30,7 +30,7 @@ services:
     build: ./cart
     image: 225834/cart:v1
     container_name: cart
-    enviroment:
+    environment:
       REDIS_HOST=redis
       CATALOGUE_HOST=catalogue
       CATALOGUE_PORT=8080
@@ -47,6 +47,8 @@ services:
       - "8080:80"
     depends_on:
       - catalogue
+      - useer
+      - cart
 networks:
   default:
     name: roboshop
