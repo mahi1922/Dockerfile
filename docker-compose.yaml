@@ -10,6 +10,16 @@ services:
     container_name: catalogue
     depends_on:
       - mongodb
+  frontend:
+    build: ./frontend
+    image: 225834/frontend:v1
+    container_name: frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - catalogue
+      - user
+      - cart
   redis:
     image: redis:7
     container_name: redis
@@ -39,16 +49,13 @@ services:
         condition: service_healthy
       catalogue:
         condition: service_healthy
-  frontend:
-    build: ./frontend
-    image: 225834/frontend:v1
-    container_name: frontend
-    ports:
-      - "8080:80"
-    depends_on:
-      - catalogue
-      - user
-      - cart
+  mysql:
+    build: ./mysql
+    image: 225834/mysql:8
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "RoboShop@1"
+  
 networks:
   default:
     name: roboshop
