@@ -14,8 +14,6 @@ services:
     build: ./user
     image: 225834/user:v1
     container_name: user
-    ports:
-      - "8081:80"
     environment:
       MONGO: true
       REDIS_URL: 'redis://redis:6379'
