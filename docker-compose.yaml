@@ -51,7 +51,7 @@ services:
         condition: service_healthy
   mysql:
     build: ./mysql
-    image: 225834/mysql:8
+    image: 225834/mysql
     container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: "RoboShop@1"
