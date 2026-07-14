@@ -15,10 +15,9 @@ services:
     image: 225834/user:v1
     container_name: user
     ports:
-      - "8080:80"
+      - "8081:80"
     environment:
       MONGO: true
-      REDIS_URL: 'redis://redis:6379'
       MONGO_URL: "mongodb://mongodb:27017/users"
     depends_on:
       - mongodb
