@@ -23,7 +23,9 @@ services:
       MONGO_URL: "mongodb://mongodb:27017/users"
     depends_on:
       - mongodb
+        condition: service_healthy
       - redis
+        condition: service_healthy
   frontend:
     build: ./frontend
     image: 225834/frontend:v1
