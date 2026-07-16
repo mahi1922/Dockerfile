@@ -47,7 +47,7 @@ services:
       MYSQL_ROOT_PASSWORD: "RoboShop@1"
   shipping:
     build: ./shipping
-    image: joindevops/shipping:v1
+    image: 225834/shipping:v1
     container_name: shipping
     environment:
       CART_ENDPOINT: "cart:8080"
@@ -55,6 +55,22 @@ services:
     depends_on:
       - mysql
       - cart
+  payments:
+    build: ./payments
+    image: 225834/payment:v1
+    container_name: payment
+    environment:
+      CART_HOST: "cart"
+      CART_PORT: 8080
+      USER_HOST: user
+      USER_PORT: 8080
+      AMQP_HOST: rabbitmq
+      AMQP_USER: roboshop
+      AMQP_PASS: roboshop123
+    depends_on:
+    - cart
+    - user
+    - rabbitmq
   rabbitmq:
     image: rabbitmq:3
     container_name: rabbitmq
