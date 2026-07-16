@@ -57,7 +57,7 @@ services:
       - cart
   payments:
     build: ./payments
-    image: 225834/payment:v1
+    image: 225834/payments:v1
     container_name: payment
     environment:
       CART_HOST: "cart"
