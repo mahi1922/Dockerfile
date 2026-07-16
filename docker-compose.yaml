@@ -58,7 +58,7 @@ services:
   payments:
     build: ./payments
     image: 225834/payments:v1
-    container_name: payment
+    container_name: payments
     environment:
       CART_HOST: "cart"
       CART_PORT: 8080
